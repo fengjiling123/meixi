@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	
+	<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.css">
+
+	<script type="text/javascript" src="/bootstrap/js/jquery.js"></script>
+	<script type="text/javascript" src="/bootstrap/js/bootstrap.js"></script>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/register.css">
+	<script type="text/javascript" src='/javascripts/jquery.serialize-object.min.js'></script>
+	<script type="text/javascript" src="/javascripts/register.js"></script>
+	
+	
+</head>
+<body>
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid">
+	    <!-- Brand and toggle get grouped for better mobile display -->
+	    <div class="navbar-header">	    	
+	      <a class="navbar-brand" href="/">注册</a>
+	    </div>	   
+	  </div><!-- /.container-fluid -->
+	</nav>
+    <div class="container">
+        <form method="post">
+            <div class="form-group">
+                <label for="exampleInputEmail1">用户名</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="用户名" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="tel">手机</label>
+                <input type="tel" class="form-control" id="tel" placeholder="手机" name="tel" pattern="^(0|86|17951)?(13[0-9]|15[012356789]|17[0678]|18[0-9]|14[57])[0-9]{8}" required>
+            </div>
+            <div class="form-group">
+                <label for="email">邮箱</label>
+                <input type="email" class="form-control" id="email" placeholder="邮箱" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">密码</label>
+                <input type="password" class="form-control" id="password" placeholder="密码" name="password" required>
+            </div>
+            <button type="button" class="btn btn-default">注册</button>
+            <span><a href="/login.html">已注册？去登陆</a></span>
+           	<p></p>
+        </form>
+    </div>
+</body>
+</html>

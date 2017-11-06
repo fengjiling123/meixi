@@ -1,0 +1,14 @@
+#pro_detail{
+	margin-left: 30px;
+	margin-top: 50px
+}
+
+#pro_detail p{
+	line-height: 30px;
+	width: 300px;
+	border-bottom: 1px dashed #ccc;
+}
+
+tbody,td,th,tr{
+	text-align: center;
+}

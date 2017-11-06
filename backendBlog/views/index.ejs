@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.css">
+    <script type="text/javascript" src="/bootstrap/js/jquery.js"></script>
+    <script type="text/javascript" src="/bootstrap/js/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/index.css">
+</head>
+<style type="text/css" media="screen">
+table,
+td,
+tr,
+th {
+    text-align: center;
+}
+
+a.btn{
+  margin-left: 5px
+}
+nav.navigation{
+  text-align: center;
+}
+</style>
+
+<body>
+    <%- include("./header.ejs",{title:"商品后台管理页面",isShow:true,CurrentUser:CurrentUser})%>
+
+        <div class="container">
+           <!--  <div class="list-group navbar-left">
+              <a href="#" class="list-group-item active">
+              全部商品
+              </a>
+              <a href="#" class="list-group-item">
+              发布商品
+              </a>
+              <a href="#" class="list-group-item">
+              评论管理
+              </a>
+              <a href="#" class="list-group-item">
+              订单管理
+              </a>
+              
+            </div> -->
+            <table class="table table-bordered navbar-right">
+                <thead>
+                    <tr>
+                        <th>商家</th>
+                        <th>品牌</th>
+                        <th>材质</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%for(val in list){%>
+                        <tr>
+                            <td>
+                                <%= list[val].author%>
+                            </td>
+                            <!-- 通过URL传递该条信息id值 -->
+                            <td>
+                                <a href="/artical/detail?id=<%= list[val]._id%>">
+                                    <%= list[val].logo%>
+                                </a>
+                            </td>
+                            <td>
+                                <%= list[val].texture%>
+                            </td>
+                            
+                            <td>
+                                <a href="/artical/update?id=<%= list[val]._id%>" class="btn btn-info">修改</a>
+                                <a href="/artical/delete?id=<%= list[val]._id%>" class="btn btn-danger">删除</a>
+                                <a href="/comment/?id=<%= list[val]._id%>" class="btn btn-warning">所有评论</a>
+                            </td>
+                        </tr>
+                        <%}%>
+                </tbody>
+            </table>
+        </div>
+        <nav aria-label="Page navigation" class="navigation">
+          <ul class="pagination">
+            <li>
+              <a href="/?limit=10&offset=0" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+             <%for(var i=0;i<Math.ceil(listAll.length/10);i++){%>
+              <li><a href="/?limit=10&offset=<%= 10*i%>"><%- (i-0+1)%></a></li>
+            <%}%>
+            <li>
+              <a href="/?limit=10&offset=<%- Math.ceil(listAll.length/10-1)*10%>" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+</body>
+
+</html>

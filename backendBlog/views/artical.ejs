@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.css">
+    <script type="text/javascript" src="/bootstrap/js/jquery.js"></script>
+    <script type="text/javascript" src="/bootstrap/js/bootstrap.js"></script>
+</head>
+<style type="text/css" media="screen">
+    .navbar-header{
+        height: 80px;
+        font-size: 45px
+    }
+
+    .navbar-header a{
+        font-size: 30px;
+        height: 80px;
+        line-height: 50px;
+        padding-left: 30px
+    }
+</style>
+<body>
+    <%- include("./header.ejs",{title:title,isShow:false,CurrentUser:CurrentUser})%>
+        <div class="container">
+            <%if(isNew){%>
+                <form method="post" action="/artical" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="logo">品牌</label>
+                        <input type="text" class="form-control" id="logo" placeholder="品牌" name="logo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="texture">材质</label>
+                        <input type="text" class="form-control" id="texture" placeholder="材质" name="texture" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="price">价格</label>
+                        <input type="text" class="form-control" id="price" placeholder="价格" name="price" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="color">颜色</label>
+                        <input type="text" class="form-control" id="color" placeholder="颜色" name="color" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="image">图片</label>
+                        <input type="file" id="image" placeholder="图片" name="image" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="content">描述</label>
+                        <textarea name="content" id='content' rows="5" class="form-control" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-default">发表</button>
+                </form>
+                <%}else{%>
+                <form method="post" action="/artical/update" enctype="multipart/form-data">
+                    
+                    <div class="form-group">
+                        <label for="logo">品牌</label>
+                        <input type="text" class="form-control" id="logo" placeholder="品牌" name="logo" required value="<%= detail[0].logo%>">
+                    </div>
+                    <div class="form-group">
+                        <label for="texture">材质</label>
+                        <input type="text" class="form-control" id="texture" placeholder="材质" name="texture" required value="<%= detail[0].texture%>">
+                    </div>
+                    <div class="form-group">
+                        <label for="price">价格</label>
+                        <input type="text" class="form-control" id="price" placeholder="价格" name="price" required value="<%= detail[0].price%>">
+                    </div>
+                    <div class="form-group">
+                        <label for="color">颜色</label>
+                        <input type="text" class="form-control" id="color" placeholder="颜色" name="color" required value="<%= detail[0].color%>">
+                    </div>
+                    <div class="form-group">
+                        <label for="image">图片</label>
+                        <input type="file" id="image" placeholder="图片" name="image" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="content">描述</label>
+                        <textarea name="content" id='content' rows="5" class="form-control" required><%= detail[0].content%></textarea>
+                    </div>
+                    <input type="hidden" name="_id" value="<%= detail[0]._id%>" placeholder="">
+                    <button type="submit" class="btn btn-default">修改</button>
+                </form>
+                <%}%>
+        </div>
+</body>
+
+</html>

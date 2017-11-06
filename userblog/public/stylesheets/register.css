@@ -1,0 +1,61 @@
+body,html{
+	height: 100%;
+	background:url("https://passport.yhd.com/front-passport/passport/images/r_icon5.png?01ce9c7");
+}
+
+form{
+	padding: 20px;
+	border-radius: 10px;
+	position: absolute;
+	left:50%;
+	top: 50%;
+	margin-left: -200px;
+	margin-top: -250px;
+	width: 400px;
+	height: 520px;
+	background-color: #fff;
+	
+	box-shadow: 3px 3px 5px 2px #eee, -3px -3px 5px 2px #eee
+
+}
+
+form>div{
+	margin-top: 30px
+}
+
+button{
+	margin-left: 150px;
+	
+	
+}
+
+.navbar-header{
+	height: 80px;
+	font-size: 50px
+}
+
+.navbar-header a{
+	font-size: 30px;
+	height: 80px;
+	line-height: 50px;
+	padding-left: 30px
+}
+
+span{
+	display: block;
+	margin-left: 130px;
+	margin-top: 20px
+
+}
+
+.val{
+	text-align: center;
+	color: red;
+	margin-top: 10px
+}
+
+p{
+	text-align:center;
+	font-size:12px;
+	color:red
+}

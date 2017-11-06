@@ -1,0 +1,29 @@
+.navbar-header{
+	height: 80px;
+	font-size: 45px
+}
+
+.navbar-header a{
+	font-size: 30px;
+	height: 80px;
+	line-height: 50px;
+	padding-left: 30px
+}
+
+li.header_a a{
+	height: 80px;
+	line-height: 50px;
+	font-size: 16px
+}
+
+.list-group{
+	width: 200px;
+
+} 
+
+
+
+.list-group-item.active{
+	background-color: #5bc0de;
+	border-color: #46b8da
+}

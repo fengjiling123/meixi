@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.css">
+	<script type="text/javascript" src="/bootstrap/js/jquery.js"></script>
+	<script src="/javascripts/jquery.serialize-object.min.js"></script>
+	<script type="text/javascript" src="/bootstrap/js/bootstrap.js"></script>
+		
+	<script type="text/javascript" src="/javascripts/header.js"></script>
+	<script type="text/javascript" src="/javascripts/comment.js">
+	</script>
+	<link rel="stylesheet" href="/stylesheets/comment.css">
+</head>
+<body>
+	<nav class="navbar navbar-default">
+	  	<div class="container-fluid">
+	  	    <!-- Brand and toggle get grouped for better mobile display -->
+	  	    <div class="navbar-header">     
+	  	      <a class="navbar-brand" href="/index.html">评论页面</a>
+	  	    </div>
+
+	  	    <!-- Collect the nav links, forms, and other content for toggling -->
+	  	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">     
+	  	      
+	  	    </div><!-- /.navbar-collapse -->
+	  	  </div><!-- /.container-fluid -->
+	</nav>
+
+	<div class="container">
+		
+		<form method="get" action="">
+			<img src="" alt="" width="100px">
+		  	<div class="form-group">
+			    <input type="hidden" class="form-control" id="commentUser" name="commentUser">
+			</div>
+		  	<div class="form-group">
+			    <input type="hidden" class="form-control" id="pro_id" name="pro_id">
+			</div>
+			 <div class="form-group">
+			 	<label for="eval">评分：</label>
+			    <select name="eval" id="eval" required>
+			    	<option value="5">5：很满意</option>
+			    	<option value="4">4：满意</option>
+			    	<option value="3">3：一般</option>
+			    	<option value="2">2：不喜欢</option>
+			    	<option value="1">1：很差</option>
+			    </select>
+			 </div>
+			 <div class="form-group">
+			 	<label>评论：</label>
+			    <textarea class="form-control" rows="5" name="eval_content" required></textarea>
+			 </div>		  
+			 <button type="button" class="btn btn-default">提交</button>
+		</form>
+	</div>	
+</body>
+<script type="text/javascript">
+
+	if(window.location.search){
+		
+		
+		var pro_id=window.location.search.split("?")[1].split("&")[0].split("=")[1]
+		$("#pro_id").val(pro_id)
+		var imagePath=window.location.search.split("?")[1].split("&")[1].split("=")[1]
+		$("img").attr("src","http://localhost:3000"+imagePath)
+	}
+	
+	$('.btn').on("click",function(){
+		$.ajax({		
+			url:"/comment",
+			data:$('form').serializeObject()
+		}).then(result=>{
+			if(result!='error'){
+				window.location.href="detail.html?id="+pro_id
+			}else{
+				alert("请登录")
+			}
+			
+		})
+	})
+
+
+	$.ajax({
+		url:"/clientuser/getLoginUser",
+		method:"post"
+	}).then(result=>{
+		//console.log(result)
+		if(result!='error'){
+			$("#commentUser").val(JSON.parse(result).currentUser)
+		}else{
+			
+		}
+	})
+	
+
+</script>
+</html>
+
+

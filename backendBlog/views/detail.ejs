@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.css">
+    <script type="text/javascript" src="/bootstrap/js/jquery.js"></script>
+    <script type="text/javascript" src="/bootstrap/js/bootstrap.js"></script>
+    <style type="text/css" media="screen">
+    .navbar-left p {
+        width: 300px;
+        border-bottom: 1px dashed #ccc;
+        margin-top: 20px
+    }
+
+    img.navbar-left {
+        margin-left: 30px;
+        margin-top: 20px;
+        width: 200px
+    }
+
+    div.panel-footer {
+        overflow: hidden;
+    }
+
+    div.navbar-left {
+        margin-top: 20px;
+        margin-left: 30px
+    }
+
+    .navbar-left.left {
+        margin-left: 30px
+    }
+
+    .navbar-header {
+        height: 80px;
+        font-size: 45px
+    }
+
+    .navbar-header a {
+        font-size: 30px;
+        height: 80px;
+        line-height: 50px;
+        padding-left: 30px
+    }
+    </style>
+</head>
+
+<body>
+    <%- include("./header.ejs",{title:"商品详情",isShow:false,CurrentUser:CurrentUser})%>
+        <div class="container">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">品牌：<%= detail[0].logo%></h3>
+                </div>
+                <div class="panel-body">
+                    <div style="overflow:hidden">
+                        <img src="<%= detail[0].imagePath%>" class="navbar-left">
+                        <div class="navbar-left" style="">
+                            <p>颜色：
+                                <%= detail[0].color%>
+                            </p>
+                            <p>价格：￥
+                                <%= detail[0].price%>
+                            </p>
+                            <p>材质：
+                                <%= detail[0].texture%>
+                            </p>
+                        </div>
+                    </div>
+                    <div style="border-top:1px dashed #ccc;padding:10px 0">描述：
+                        <%= detail[0].content%>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <div style="overflow:hidden">
+                        <span class="navbar-left">
+                            发布时间：<%- detail[0].createTime.toLocaleString()%>
+                        </span>
+                        <span class="navbar-left left">
+                            更新时间：<%- detail[0].updateTime.toLocaleString()%>
+                        </span>
+                    </div>
+                    <div class="" style="margin-top:20px">
+                        <p>评论数：<%= count%></p>
+                        <a class="btn btn-info" href="/comment?id=<%- detail[0]._id%>">
+                            所有评论
+                        </a>
+                    </div>
+                </div>
+                
+            </div>
+            
+        </div>
+</body>
+
+</html>
